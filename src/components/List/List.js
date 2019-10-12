@@ -3,14 +3,20 @@ import styled from "styled-components";
 import ListItem from "../ListItem/ListItem";
 import fetch from "isomorphic-fetch";
 
+const completedTasks = response => {
+  return response.filter(x => x.completed === true).length;
+};
+
 const List = () => {
   const [response, setResponse] = useState([]);
   const [objectLength, setObjectLength] = useState(null);
+  const [tasksCompleted, setTasksCompleted] = useState(null);
   useEffect(() => {
     fetch("/api/todos")
       .then(res => res.json())
       .then(res => {
         setObjectLength(res.length);
+        setTasksCompleted(completedTasks(res));
         setResponse(res);
       })
       .catch(e => console.log(e));
@@ -19,7 +25,7 @@ const List = () => {
   return (
     <>
       <Subheading>{objectLength} results</Subheading>
-      <Subheading>{objectLength} completed tasks</Subheading>
+      <Subheading>{tasksCompleted} completed tasks</Subheading>
       <UnorderedList>
         {response.map(x => (
           <ListItem key={x.id} identification={x.id} title={x.title} />
