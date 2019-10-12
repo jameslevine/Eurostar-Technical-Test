@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ListItem = props => {
   return (
     <ListItemContainer>
-      <ListItemElement key={props.id}>
+      <ListItemElement>
         <Title>
           {props.title} - {props.identification}
         </Title>
