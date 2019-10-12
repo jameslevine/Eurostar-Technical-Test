@@ -14,10 +14,6 @@ Tests Written?
 
 If not necessary, please give reasons. Please don't delete this section.
 
-Storybook Amendments Made?
-
-If not necessary, please give reasons. Don't delete this section.
-
 Accessible?
 
 If not necessary, please give reasons. Don't delete this section.
