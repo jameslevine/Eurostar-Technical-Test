@@ -5,9 +5,8 @@ const ListItem = props => {
   return (
     <ListItemContainer>
       <ListItemElement>
-        <Title>
-          {props.title} - {props.identification}
-        </Title>
+        <Title>Title: {props.title}</Title>
+        <Title>Task ID: {props.identification}</Title>
       </ListItemElement>
     </ListItemContainer>
   );

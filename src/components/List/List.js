@@ -7,6 +7,12 @@ const completedTasks = response => {
   return response.filter(x => x.completed === true).length;
 };
 
+const reverseData = response => {
+  return response.sort(function(a, b) {
+    return b.id - a.id;
+  });
+};
+
 const List = () => {
   const [response, setResponse] = useState([]);
   const [objectLength, setObjectLength] = useState(null);
@@ -17,6 +23,7 @@ const List = () => {
       .then(res => {
         setObjectLength(res.length);
         setTasksCompleted(completedTasks(res));
+        reverseData(res);
         setResponse(res);
       })
       .catch(e => console.log(e));
