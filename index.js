@@ -3,11 +3,11 @@ const data = require("./data.json");
 
 const app = express();
 
-app.get("/api/todos", function (_req, res) {
+app.get("/api/todos", function(_req, res) {
   res.status(200).send(data);
-})
-app.use(express.static('public'));
+});
+app.use(express.static("public"));
 
-app.listen(3000, function () {
-  console.log(`🚄 Server running @ http://localhost:3000`)
+app.listen(3002, function() {
+  console.log(`🚄 Server running @ http://localhost:3002`);
 });
