@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { hot } from "react-hot-loader";
 import styled from "styled-components";
+import List from "./components/List/List";
 
 const App = () => {
   return (
     <Container>
       <Title> Eurostar To-do List </Title>
+      <List />
     </Container>
   );
 };

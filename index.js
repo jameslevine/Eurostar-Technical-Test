@@ -8,6 +8,6 @@ app.get("/api/todos", function(_req, res) {
 });
 app.use(express.static("public"));
 
-app.listen(3002, function() {
-  console.log(`🚄 Server running @ http://localhost:3002`);
+app.listen(4000, function() {
+  console.log(`🚄 Server running @ http://localhost:4000`);
 });
