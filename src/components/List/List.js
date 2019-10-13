@@ -35,7 +35,12 @@ const List = () => {
       <Subheading>{tasksCompleted} completed tasks</Subheading>
       <UnorderedList>
         {response.map(x => (
-          <ListItem key={x.id} identification={x.id} title={x.title} />
+          <ListItem
+            key={x.id}
+            completed={x.completed}
+            identification={x.id}
+            title={x.title}
+          />
         ))}
       </UnorderedList>
     </>
