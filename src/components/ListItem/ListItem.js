@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
+const useEditCompleted = (id, boolean) => {
+  fetch(`/api/completed/${id}/${boolean}`).catch(e => console.log(e));
+};
 
 const ListItem = props => {
   const [checkboxColour, setCheckboxColour] = useState(props.completed);
+  const [tasksCompleted, setTasksCompleted] = useState(props.tasksCompleted);
   return (
     <ListItemContainer>
       <ListItemElement>
         <div>
           <Title>Title: {props.title}</Title>
-          <Title>Task ID: {props.identification}</Title>
+          <Title>
+            {props.identification} of {props.list.total}
+          </Title>
         </div>
         <StyledCheckbox
           style={
@@ -16,7 +24,10 @@ const ListItem = props => {
               ? { backgroundColor: "green" }
               : { backgroundColor: "white" }
           }
-          onClick={() => setCheckboxColour(!checkboxColour)}
+          onClick={() => {
+            useEditCompleted(props.identification, !checkboxColour);
+            setCheckboxColour(!checkboxColour);
+          }}
         >
           {checkboxColour && (
             <StyledTick src="https://icon-library.net/images/tick-icon-png/tick-icon-png-2.jpg" />
@@ -27,11 +38,12 @@ const ListItem = props => {
   );
 };
 
-export default ListItem;
+export default connect(state => state)(ListItem);
 
 const Title = styled.h3`
-  font-weight: 600;
   margin: 0;
+  font-weight: 600;
+  font-size: 15px;
 `;
 
 const ListItemElement = styled.li`
