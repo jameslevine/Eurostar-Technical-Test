@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import ListItem from "../ListItem/ListItem";
 import fetch from "isomorphic-fetch";
 
 const completedTasks = response => {
-  return response.filter(x => x.completed === true).length;
+  const totalCompleted = response.filter(x => x.completed === true).length;
+  return totalCompleted;
 };
 
 const reverseData = response => {
@@ -13,15 +15,17 @@ const reverseData = response => {
   });
 };
 
-const List = () => {
+const List = props => {
   const [response, setResponse] = useState([]);
-  const [objectLength, setObjectLength] = useState(null);
   const [tasksCompleted, setTasksCompleted] = useState(null);
   useEffect(() => {
     fetch("/api/todos")
       .then(res => res.json())
       .then(res => {
-        setObjectLength(res.length);
+        props.dispatch({
+          type: "TOTAL_COUNT",
+          payload: res.length
+        });
         setTasksCompleted(completedTasks(res));
         reverseData(res);
         setResponse(res);
@@ -31,8 +35,10 @@ const List = () => {
 
   return (
     <>
-      <Subheading>{objectLength} results</Subheading>
-      <Subheading>{tasksCompleted} completed tasks</Subheading>
+      <Subheading>{props.list.total} results</Subheading>
+      <Subheading>
+        {tasksCompleted}/{props.list.total} completed
+      </Subheading>
       <UnorderedList>
         {response.map(x => (
           <ListItem
@@ -40,6 +46,7 @@ const List = () => {
             completed={x.completed}
             identification={x.id}
             title={x.title}
+            tasksCompleted={tasksCompleted}
           />
         ))}
       </UnorderedList>
@@ -47,7 +54,7 @@ const List = () => {
   );
 };
 
-export default List;
+export default connect(state => state)(List);
 
 const Subheading = styled.h2`
   font-style: italic;
