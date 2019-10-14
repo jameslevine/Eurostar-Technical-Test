@@ -8,9 +8,7 @@ const editCompleted = (req, res) => {
   const readData = fs.readFileSync(__dirname + "/../../data.json");
   const parsedData = JSON.parse(readData);
   parsedData.map(x => {
-    console.log("this is x", typeof req.params.id);
     if (x.id === parseInt(req.params.id)) {
-      console.log("id matches", x);
       x.completed = parseBoolean(req.params.completed);
     }
   });
