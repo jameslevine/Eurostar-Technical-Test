@@ -15,3 +15,5 @@ app.use(express.static("public"));
 app.listen(4000, function() {
   console.log(`🚄 Server running @ http://localhost:4000`);
 });
+
+module.exports = app;
