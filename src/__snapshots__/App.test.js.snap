@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Connected React-Redux Component should render with given state from Redux store 1`] = `
+<div
+  className="sc-gzVnrw ewKZgt"
+>
+  <h1
+    className="sc-htoDjs htzNlH"
+  >
+    Eurostar To-do List
+  </h1>
+  <h2
+    className="sc-EHOje cyUrgm"
+  >
+    200
+     results
+  </h2>
+  <h2
+    className="sc-EHOje cyUrgm"
+  >
+    /
+    200
+     completed
+  </h2>
+  <ul
+    className="sc-bZQynM hSufOU"
+  />
+</div>
+`;

@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Connected React-Redux Component should render with given state from Redux store 1`] = `
+<div
+  className="sc-htpNat fMPSta"
+>
+  <li
+    className="sc-bwzfXH fHycKW"
+  >
+    <div>
+      <h3
+        className="sc-bdVaJa fvCAJY"
+      >
+        Title: 
+      </h3>
+      <h3
+        className="sc-bdVaJa fvCAJY"
+      >
+         of 
+        200
+      </h3>
+    </div>
+    <div
+      className="sc-bxivhb ezPioi"
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "white",
+        }
+      }
+    />
+  </li>
+</div>
+`;

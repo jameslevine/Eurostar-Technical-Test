@@ -6,7 +6,7 @@ import List from "./components/List/List";
 const App = () => {
   return (
     <Container>
-      <Title> Eurostar To-do List </Title>
+      <Title>Eurostar To-do List</Title>
       <List />
     </Container>
   );
